@@ -23,7 +23,7 @@ class ProductCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           gradient: const LinearGradient(
-            colors: [Colors.white, Colors.lightBlue],
+            colors: [Colors.white, Colors.blueAccent],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -47,10 +47,26 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.network(product.image, height: 100),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      product.image,
+                      height: 100,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         product.title,
@@ -63,8 +79,10 @@ class ProductCard extends StatelessWidget {
                       Text(product.category,
                           style: const TextStyle(color: Colors.white)),
                       const SizedBox(height: 4),
-                      Text('\$${product.price}',
-                          style: const TextStyle(color: Colors.green)),
+                      Text(
+                        '\$${product.price}',
+                        style: const TextStyle(color: Colors.lightGreen),
+                      ),
                     ],
                   ),
                 ),

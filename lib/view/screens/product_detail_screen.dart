@@ -44,29 +44,68 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(children: [
-                Image.network(
-                  product!.image,
-                  height: 200,
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          product!.image,
+                          height: 200,
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          product.title,
+                          style: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          '\$${product.price}',
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.green),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Text(product.description),
+                        const SizedBox(height: 8),
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(
-                  product.title,
-                  style: const TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  '\$${product.price}',
-                  style: const TextStyle(fontSize: 20, color: Colors.green),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(product.description),
+                // const Spacer(),
+                SizedBox(
+                  width: double.infinity,
+                  height: 60,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue[300],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.shopping_cart,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'Add to cart',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+                // ElevatedButton(onPressed: () {}, child: Text("Add to cart"),style: ButtonStyle(),)
               ]),
             );
           },
